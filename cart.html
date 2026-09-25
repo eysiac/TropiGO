@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart · TropiGo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- Theme (load early to avoid flash) -->
+    <script src="theme.js"></script>
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo-area" style="text-decoration:none;">
+                    <img src="tttptptppt.jpg" alt="TropiGo Logo" class="logo-icon" />
+                    <span class="brand">Tropi<span>Go</span></span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a class="nav-btn" href="index.html#menu"><i class="fas fa-utensils"></i> Menu</a>
+                    <a class="nav-btn" href="index.html#howto"><i class="fas fa-list-ol"></i> How to Order</a>
+                    <a class="nav-btn" href="index.html#story"><i class="fas fa-book-open"></i> Story</a>
+                    <a class="nav-btn" href="index.html#faqs"><i class="fas fa-question-circle"></i> FAQs</a>
+                    <a class="nav-btn order-btn active" href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="theme-toggle" aria-label="Switch theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="order-page">
+            <div class="order-page-header">
+                <div class="order-icon"><i class="fas fa-shopping-cart"></i></div>
+                <h2>Your Order</h2>
+                <p>Review your items before checkout</p>
+            </div>
+
+            <div class="cart-container" id="cartContainer"></div>
+
+            <div class="cart-summary" id="cartSummary" style="display:none;">
+                <div class="summary-row"><span>Subtotal</span><span id="subtotal">₱0</span></div>
+                <div class="summary-row total-row"><span>Total</span><span id="total">₱0</span></div>
+                <button class="btn-primary" id="checkoutBtn" style="width:100%; justify-content:center; margin-top:14px;">
+                    <i class="fas fa-arrow-right"></i> Proceed to Checkout
+                </button>
+                <a href="index.html#menu" class="back-to-main" style="text-decoration:none; display:flex; justify-content:center; margin-top:12px;">
+                    <i class="fas fa-plus"></i> Add more items
+                </a>
+            </div>
+
+            <div class="cart-empty" id="cartEmpty" style="display:none;">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Your cart is empty</h3>
+                <p>Add some fresh blends from our menu!</p>
+                <a href="index.html#menu" class="btn-primary" style="text-decoration:none;">
+                    <i class="fas fa-utensils"></i> Browse Menu
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var hamburgerBtn = document.getElementById('hamburger');
+        var navLinksEl = document.getElementById('navLinks');
+        if (hamburgerBtn && navLinksEl) {
+            hamburgerBtn.addEventListener('click', () => navLinksEl.classList.toggle('open'));
+        }
+    </script>
+    <script src="cart.js"></script>
+</body>
+</html>

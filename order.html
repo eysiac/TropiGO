@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Place an Order · TropiGo</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- External CSS (same file as the home page) -->
+    <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+    <!-- Rotate hint shown only on small portrait phones -->
+    <div class="rotate-hint">
+        <i class="fas fa-mobile-screen-button"></i>
+        <p>Paikutin ang iyong phone pahiga (landscape) para sa pinakamagandang karanasan sa TropiGo.</p>
+    </div>
+
+    <div class="app-wrapper">
+        <!-- ========== NAVIGATION ========== -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo-area" style="text-decoration:none;">
+                    <img src="tttptptppt.jpg" alt="TropiGo Logo" class="logo-icon" />
+                    <span class="brand">Tropi<span>Go</span></span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a class="nav-btn" href="index.html#menu"><i class="fas fa-utensils"></i> Menu</a>
+                    <a class="nav-btn" href="index.html#story"><i class="fas fa-book-open"></i> Story</a>
+                    <a class="nav-btn" href="index.html#reviews"><i class="fas fa-star"></i> Reviews</a>
+                    <a class="nav-btn" href="index.html#faqs"><i class="fas fa-question-circle"></i> FAQs</a>
+                    <a class="nav-btn" href="index.html#socials"><i class="fas fa-share-alt"></i> Socials</a>
+                    <a class="nav-btn order-btn active" href="order.html"><i class="fas fa-clipboard-list"></i> Order</a>
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- ===== ORDER PAGE (its own full screen — like the other pages, but its own file) ===== -->
+        <div class="order-page" id="orderPage">
+            <div class="order-page-header">
+                <div class="order-icon"><i class="fas fa-clipboard-list"></i></div>
+                <h2>Place Your Order</h2>
+                <p>Freshly blended <strong style="color:#d9a441;">TropiGo</strong> — made just for you</p>
+            </div>
+
+            <div class="order-form-container">
+                <p class="sub"><span class="tropi">TropiGo</span> blends — 16oz servings</p>
+                <form id="orderForm">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required />
+
+                    <label for="contact">Contact Number</label>
+                    <input type="tel" id="contact" placeholder="09XXXXXXXXX" required />
+
+                    <label for="product">Select Product</label>
+                    <select id="product" required>
+                        <option value="">-- Select Product --</option>
+                        <option value="Mango Lassi Classic (₱79 - 16oz)">Mango Lassi Classic (₱79 - 16oz)</option>
+                        <option value="Matcha Mango Lassi (₱89 - 16oz)">Matcha Mango Lassi (₱89 - 16oz)</option>
+                        <option value="Watermelon Mango Lassi (₱79 - 16oz)">Watermelon Mango Lassi (₱79 - 16oz)</option>
+                        <option value="Dark Chocolate Mango Lassi (₱89 - 16oz)">Dark Chocolate Mango Lassi (₱89 - 16oz)</option>
+                        <option value="Mango Cheesecake Lassi (₱99 - 16oz)">Mango Cheesecake Lassi (₱99 - 16oz)</option>
+                    </select>
+
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" min="1" value="1" required />
+
+                    <label for="delivery">Preferred Pickup/Delivery</label>
+                    <select id="delivery" required>
+                        <option value="">Select</option>
+                        <option>Pickup</option>
+                        <option>Delivery</option>
+                    </select>
+
+                    <label for="payment">Preferred Payment Method</label>
+                    <select id="payment" required>
+                        <option value="">Select</option>
+                        <option>Cash</option>
+                        <option>GCash</option>
+                        <option>Bank Transfer</option>
+                        <option>Credit/Debit Card</option>
+                    </select>
+
+                    <label for="instructions">Special Instructions</label>
+                    <textarea id="instructions" rows="3" placeholder="Any special requests? (e.g., less sugar, extra mango)"></textarea>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-check"></i> Submit Order
+                    </button>
+                </form>
+                <p id="orderMessage"></p>
+
+                <div style="text-align:center; margin-top:14px;">
+                    <a href="index.html" class="back-to-main" style="text-decoration:none;">
+                        <i class="fas fa-arrow-left"></i> Back to Main Page
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end order-page -->
+
+    </div>
+    <!-- end app-wrapper -->
+
+    <script>
+        // Mobile hamburger menu toggle (self-contained; order.html doesn't load script.js)
+        var hamburgerBtn = document.getElementById('hamburger');
+        var navLinksEl = document.getElementById('navLinks');
+        if (hamburgerBtn && navLinksEl) {
+            hamburgerBtn.addEventListener('click', function () {
+                navLinksEl.classList.toggle('open');
+            });
+        }
+
+        // Pre-select the product if it was passed in the URL, e.g.
+        // order.html?product=Matcha%20Mango%20Lassi%20(%E2%82%B189%20-%2016oz)
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var product = params.get('product');
+            if (product) {
+                var select = document.getElementById('product');
+                if (select) {
+                    select.value = product;
+                }
+            }
+        })();
+
+        // Basic submit handling (this page no longer depends on script.js)
+        var orderForm = document.getElementById('orderForm');
+        if (orderForm) {
+            orderForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var msg = document.getElementById('orderMessage');
+                var name = document.getElementById('name').value.trim();
+                if (msg) {
+                    msg.style.color = '#27ae60';
+                    msg.textContent = 'Thank you, ' + name + '! Your order has been received. We\'ll contact you shortly to confirm.';
+                }
+                orderForm.reset();
+            });
+        }
+    </script>
+
+</body>
+</html>

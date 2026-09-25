@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout · TropiGo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- Theme (load early to avoid flash) -->
+    <script src="theme.js"></script>
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo-area" style="text-decoration:none;">
+                    <img src="tttptptppt.jpg" alt="TropiGo Logo" class="logo-icon" />
+                    <span class="brand">Tropi<span>Go</span></span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a class="nav-btn" href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a class="nav-btn" href="index.html#menu"><i class="fas fa-utensils"></i> Menu</a>
+                    <a class="nav-btn" href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+                    <a class="nav-btn order-btn active" href="checkout.html"><i class="fas fa-clipboard-check"></i> Checkout</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="theme-toggle" aria-label="Switch theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="order-page">
+            <div class="order-page-header">
+                <div class="order-icon"><i class="fas fa-clipboard-check"></i></div>
+                <h2>Checkout</h2>
+                <p>Almost there! Just fill in your details.</p>
+            </div>
+
+            <div class="order-form-container">
+                <div id="orderSummaryBox" class="order-summary-box"></div>
+
+                <form id="checkoutForm">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required />
+
+                    <label for="contact">Contact Number *</label>
+                    <input type="tel" id="contact" placeholder="09XXXXXXXXX" required />
+
+                    <label for="delivery">Preferred Pickup/Delivery *</label>
+                    <select id="delivery" required>
+                        <option value="">Select</option>
+                        <option>Pickup</option>
+                        <option>Delivery</option>
+                    </select>
+
+                    <label for="address">Delivery Address (if Delivery)</label>
+                    <input type="text" id="address" placeholder="House #, Street, Barangay" />
+
+                    <label for="payment">Payment Method *</label>
+                    <select id="payment" required>
+                        <option value="">Select</option>
+                        <option>Cash</option>
+                        <option>GCash</option>
+                        <option>Bank Transfer</option>
+                        <option>Credit/Debit Card</option>
+                    </select>
+
+                    <label for="instructions">Special Instructions</label>
+                    <textarea id="instructions" rows="3" placeholder="e.g., less sugar, extra mango"></textarea>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-check"></i> Place Order
+                    </button>
+                </form>
+
+                <p id="orderMessage"></p>
+
+                <div style="text-align:center; margin-top:14px;">
+                    <a href="cart.html" class="back-to-main" style="text-decoration:none;">
+                        <i class="fas fa-arrow-left"></i> Back to Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var hamburgerBtn = document.getElementById('hamburger');
+        var navLinksEl = document.getElementById('navLinks');
+        if (hamburgerBtn && navLinksEl) {
+            hamburgerBtn.addEventListener('click', () => navLinksEl.classList.toggle('open'));
+        }
+    </script>
+    <script src="checkout.js"></script>
+</body>
+</html>
